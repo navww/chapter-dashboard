@@ -16,7 +16,7 @@ export default function Home() {
     weak: false,
   });
   const [sortAsc, setSortAsc] = useState(true);
-  const [sortBy, setSortBy] = useState("chapter"); // or "solved"
+  const [sortBy] = useState("chapter"); // or "solved"
   const [dark, setDark] = useState(false);
 
   // Make dark mode affect the entire page
@@ -169,7 +169,7 @@ export default function Home() {
         {/* Chapter List */}
         <div className="space-y-2">
           {filteredChapters.map((chapter, idx) => (
-            <div className="text-foreground bg-background" key={idx} className="flex items-center justify-between bg-white border rounded-lg px-4 py-3 hover:shadow-sm transition cursor-pointer">
+            <div className="flex items-center justify-between bg-white border rounded-lg px-4 py-3 hover:shadow-sm transition cursor-pointer text-foreground bg-background" key={idx}>
               <div className="flex items-center gap-2">
                 <Book size={18} className="text-orange-500" />
                 <span className="font-medium text-gray-800">{chapter.chapter}</span>
