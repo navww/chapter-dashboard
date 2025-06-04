@@ -96,7 +96,7 @@ export default function Home() {
                   setFilters({ class: '', unit: '', status: '', weak: false });
                 }}
               >
-                {subj === 'Physics' && <Book size={18} />}
+                {subj === 'Physics' && <Book size={18} className="text-orange-500" />}
                 {subj === 'Chemistry' && <Atom size={18} className="text-green-500" />}
                 {subj === 'Mathematics' && <Calculator size={18} className="text-blue-500" />}
                 {subj} PYQs
