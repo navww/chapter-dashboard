@@ -54,9 +54,9 @@ export default function Home() {
   });
 
   return (
-    <div className="flex min-h-screen bg-background text-foreground">
+    <div className="flex flex-col md:flex-row min-h-screen bg-background text-foreground">
       {/* Sidebar */}
-      <aside className="w-64 bg-background border-r flex flex-col py-6 px-4">
+      <aside className="hidden md:flex w-64 bg-background border-r flex-col py-6 px-4">
         <div className="flex items-center gap-2 mb-8">
           <span className="bg-orange-100 p-2 rounded-full"><Book size={24} className="text-orange-500" /></span>
           <div>
@@ -83,9 +83,9 @@ export default function Home() {
         </nav>
       </aside>
       {/* Main Content */}
-      <main className="flex-1 px-10 py-8">
+      <main className="flex-1 px-2 sm:px-4 md:px-10 py-4 md:py-8">
         <div className="mb-4 flex flex-col items-center">
-          <div className="flex w-full items-center justify-between">
+          <div className="flex w-full items-center justify-between gap-2 flex-wrap">
             <div className="text-sm font-semibold text-orange-600 flex items-center justify-center gap-2 w-full text-center">
               {subject === "Physics" && <Book size={20} />}
               {subject === "Chemistry" && <Atom size={20} className="text-green-500" />}
@@ -104,10 +104,10 @@ export default function Home() {
               )}
             </button>
           </div>
-          <div className="text-lg font-bold text-center mt-1">Chapter-wise Collection of {subject} PYQs</div>
+          <div className="text-base sm:text-lg font-bold text-center mt-1">Chapter-wise Collection of {subject} PYQs</div>
         </div>
         {/* Filters & Sort */}
-        <div className="flex gap-2 mb-2 flex-wrap items-center">
+        <div className="flex flex-col sm:flex-row gap-2 mb-2 flex-wrap items-stretch sm:items-center">
           {/* Class Filter */}
           <select
             className="border rounded px-3 py-1 text-sm text-foreground bg-background"
@@ -143,21 +143,21 @@ export default function Home() {
           </select>
           {/* Not Started Filter (status) */}
           <button
-            className={`border rounded px-3 py-1 text-sm ${filters.status === 'Not Started' ? 'bg-orange-100 text-orange-600' : ''}`}
+            className={`border rounded px-2 py-1 text-xs sm:text-sm w-full sm:w-auto ${filters.status === 'Not Started' ? 'bg-orange-100 text-orange-600' : ''}`}
             onClick={() => setFilters(f => ({ ...f, status: f.status === 'Not Started' ? '' : 'Not Started' }))}
           >
             Not Started
           </button>
           {/* Weak Chapters Toggle */}
           <button
-            className={`border rounded px-3 py-1 text-sm ${filters.weak ? 'bg-orange-100 text-orange-600' : ''}`}
+            className={`border rounded px-2 py-1 text-xs sm:text-sm w-full sm:w-auto ${filters.weak ? 'bg-orange-100 text-orange-600' : ''}`}
             onClick={() => setFilters(f => ({ ...f, weak: !f.weak }))}
           >
             Weak Chapters
           </button>
           {/* Sort Button */}
           <button
-            className="ml-auto flex items-center gap-1 border rounded px-2 py-1 text-xs sm:text-sm text-gray-500"
+            className="sm:ml-auto flex items-center gap-1 border rounded px-2 py-1 text-xs sm:text-sm text-gray-500 w-full sm:w-auto"
             onClick={() => setSortAsc(a => !a)}
             title={sortAsc ? 'Sort Descending' : 'Sort Ascending'}
           >
@@ -169,7 +169,7 @@ export default function Home() {
         {/* Chapter List */}
         <div className="space-y-2">
           {filteredChapters.map((chapter, idx) => (
-            <div className="flex items-center justify-between bg-white border rounded-lg px-4 py-3 hover:shadow-sm transition cursor-pointer text-foreground bg-background" key={idx}>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between bg-white border rounded-lg px-2 sm:px-4 py-2 sm:py-3 hover:shadow-sm transition cursor-pointer text-foreground bg-background" key={idx}>
               <div className="flex items-center gap-2">
                 <Book size={18} className="text-orange-500" />
                 <span className="font-medium text-gray-800">{chapter.chapter}</span>
