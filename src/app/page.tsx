@@ -84,6 +84,24 @@ export default function Home() {
       </aside>
       {/* Main Content */}
       <main className="flex-1 px-2 sm:px-4 md:px-10 py-4 md:py-8">
+          {/* Subject selector for mobile */}
+          <nav className="flex md:hidden gap-2 overflow-x-auto pb-2 mb-2">
+            {subjects.map(subj => (
+              <button
+                key={subj}
+                className={`flex items-center gap-2 px-3 py-2 rounded-lg whitespace-nowrap ${subject === subj ? 'bg-orange-100 dark:bg-orange-900 text-orange-600 dark:text-orange-300 font-semibold' : 'text-gray-700 dark:text-gray-200 hover:bg-orange-50 dark:hover:bg-gray-800'}`}
+                onClick={() => {
+                  setSubject(subj);
+                  setFilters({ class: '', unit: '', status: '', weak: false });
+                }}
+              >
+                {subj === 'Physics' && <Book size={18} />}
+                {subj === 'Chemistry' && <Atom size={18} className="text-green-500" />}
+                {subj === 'Mathematics' && <Calculator size={18} className="text-blue-500" />}
+                {subj} PYQs
+              </button>
+            ))}
+          </nav>
         <div className="mb-4 flex flex-col items-center">
           <div className="flex w-full items-center justify-between gap-2 flex-wrap">
             <div className="text-sm font-semibold text-orange-600 flex items-center justify-center gap-2 w-full text-center">
